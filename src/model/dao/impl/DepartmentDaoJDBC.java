@@ -47,6 +47,8 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			throw new DbException(e.getMessage());
+		} finally {
+			DB.closePreparedStatement(st);
 		}
 
 	}
@@ -66,6 +68,8 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			DB.closePreparedStatement(st);
 		}
 
 	}
@@ -113,6 +117,9 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
+		} finally {
+			DB.closeResultSet(rs);
+			DB.closePreparedStatement(st);
 		}
 
 	}
